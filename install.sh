@@ -11,7 +11,7 @@ set -e
   mkdir -p /usr/{share/insta/icon_status,doc/insta-"$pkgver"}
 }
 
-install -Dm 0644 appdata/insta.svg "$install_root"/usr/share/pixmaps
+install -Dm 0644 appdata/insta.png "$install_root"/usr/share/pixmaps
 install -Dm 0644 appdata/insta.desktop "$install_root"/usr/share/applications
 install -Dm 0644 icon_status/* "$install_root"/usr/share/insta/icon_status
 
