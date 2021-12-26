@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 # Módulos importados
-from bs4 import BeautifulSoup  # pip install beautifulsoup4
+from lxml import html  # pip install lxml
 from locale import getdefaultlocale
 from logging import warning
 from os.path import isfile, expanduser
@@ -149,11 +149,12 @@ class MainWindow(QMainWindow):
     # Função que manipula o código-fonte do webapp para checar as mensagens não lidas, emitindo sons,
     # exibindo mensagens e alterando o ícone de notificação.
     def processHtml(self, htm):
-        res = BeautifulSoup(htm, 'html.parser')
+        res = html.fromstring(htm)
+        title = res.xpath('//title')
         try:
-            if not __err__ in res.title:
+            if not __err__ in title[0].text:
                 verifyNotify(self, res)
-            if __err__ in res.title:  # Em caso de erro de conexão o título inicial não se altera
+            if __err__ in title[0].text:  # Em caso de erro de conexão o título inicial não se altera
                 if self.changeTray != 1:
                     self.tray.setIcon(QIcon(setIcon('error')))
                     self.changeTray = 1

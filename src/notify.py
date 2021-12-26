@@ -12,6 +12,8 @@ from jsonTools import set_json
 from utils import setIcon, setSound
 from version import __pagename__
 
+varClass = '_7UhW9    vy6Bb     MMzan          h_zdq  uL8Hv        T0kll '
+
 
 ########################################################################################################################
 
@@ -19,9 +21,9 @@ from version import __pagename__
 # Função para exibição de notificação.
 def notifyMessage(self):
     if self.soma > 1:
-        ms = 'Unread messages.'
+        ms = 'notifications not seen.'
     else:
-        ms = 'Unread message.'
+        ms = 'notification not seen.'
     com = 'notify-send --app-name="' + __pagename__ + '" --expire-time=' + str(set_json('TimeMessage')) + \
           ' --icon="' + realpath(setIcon('notify')) + '" "' + str(self.soma) + ' ' + ms + '"'
     run(com, shell=True)
@@ -30,10 +32,10 @@ def notifyMessage(self):
 # Essa função pode variar conforme o webapp.
 def verifyNotify(self, res):
     self.soma = 0
-    tags = res.findAll("div", {"class": "_1pJ9J"})
-
-    for tag in tags:
-        self.soma += int(tag.getText())  # Contabilizando o número de mensagens
+    for tag in res.xpath('//div[@class="bqXJH"]'):
+        self.soma += int(tag.text)
+    for tag in res.xpath('//div[@class="' + varClass + '"]'):
+        self.soma += int(tag.text)
     if self.soma != self.notify and self.soma != 0:
         if self.isHidden() or int(self.windowState()) == 1 or int(self.windowState()) == 3:
             if set_json('NotifySound'):
@@ -41,4 +43,4 @@ def verifyNotify(self, res):
                 self.notify_sound.play()
             if set_json('NotifyMessage'):
                 notifyMessage(self)
-        self.notify = self.soma  # Necessário para mapear alterações no número de
+        self.notify = self.soma  # Necessário para mapear alterações no número de notificações
