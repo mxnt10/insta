@@ -1,26 +1,27 @@
 #!/bin/bash
 
-pkgver='1.0'
+PRGNAM="insta"
+VERSION=$(< RELEASE)
 install_root=${install_root:-""}
 
 set -e
-# shellcheck disable=SC2015
 [ "$install_root" != "" ] && {
-  mkdir -p "$install_root"/usr/{bin,share/{applications,pixmaps,insta/icon_status},doc/insta-"$pkgver"}
+  mkdir -p "$install_root"/usr/{bin,share/{applications,pixmaps,"$PRGNAM"/{icon_status,sound}},doc/"$PRGNAM"-"$VERSION"}
 } || {
-  mkdir -p /usr/{share/insta/icon_status,doc/insta-"$pkgver"}
+  mkdir -p /usr/{share/"$PRGNAM"/{icon_status,sound},doc/"$PRGNAM"-"$VERSION"}
 }
 
-install -Dm 0644 appdata/insta.png "$install_root"/usr/share/pixmaps
-install -Dm 0644 appdata/insta.desktop "$install_root"/usr/share/applications
-install -Dm 0644 icon_status/* "$install_root"/usr/share/insta/icon_status
+install -Dm 0644 appdata/"$PRGNAM".svg "$install_root"/usr/share/pixmaps
+install -Dm 0644 appdata/"$PRGNAM".desktop "$install_root"/usr/share/applications
+install -Dm 0644 icon_status/* "$install_root"/usr/share/"$PRGNAM"/icon_status
+install -Dm 0644 sound/* "$install_root"/usr/share/"$PRGNAM"/sound
 
-cp -a ChangeLog LICENSE README.md "$install_root"/usr/doc/insta-"$pkgver"
-cp -Tr src "$install_root"/usr/share/insta
+cp -a ChangeLog LICENSE README.md "$install_root"/usr/doc/"$PRGNAM"-"$VERSION"
+cp -Tr src "$install_root"/usr/share/"$PRGNAM"
 
 echo "#!/bin/bash
-cd /usr/share/insta
-python3 insta.py" > "$install_root"/usr/bin/insta
+cd /usr/share/$PRGNAM
+python3 main.py" > "$install_root"/usr/bin/"$PRGNAM"
 
-chmod 755 "$install_root"/usr/bin/insta
+chmod 755 "$install_root"/usr/bin/"$PRGNAM"
 exit 0
