@@ -1,4 +1,8 @@
-# Insta - Instagram Desktop
+<h1 align="center">
+    Insta - Instagram Desktop
+    <br/><br/>
+    <a><img src="https://raw.githubusercontent.com/mxnt10/insta/master/common/preview.png"></a>
+</h1>
 
 Unofficial webapp for Instagram website using python and PyQt5 with PyQtWebEngine.
 
