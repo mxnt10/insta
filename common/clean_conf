@@ -1,4 +1,4 @@
 #!/bin/bash
 
-rm -r ~/.config/Insta
-rm -r ~/.local/share/Insta
+rm -rf ~/.config/Insta
+rm -rf ~/.local/share/Insta
