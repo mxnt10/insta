@@ -12,8 +12,6 @@ from jsonTools import set_json
 from utils import setIcon, setSound
 from version import __pagename__
 
-varClass = '_7UhW9    vy6Bb     MMzan          h_zdq  uL8Hv        T0kll '
-
 
 ########################################################################################################################
 
@@ -34,7 +32,8 @@ def verifyNotify(self, res):
     self.soma = 0
     for tag in res.xpath('//div[@class="bqXJH"]'):
         self.soma += int(tag.text)
-    for tag in res.xpath('//div[@class="' + varClass + '"]'):
+    for tag in res.xpath(
+            '//*[@id="react-root"]/section/nav/div[2]/div/div/div[3]/div/div[5]/a/div/div/div/div[2]/div/div/div/div'):
         self.soma += int(tag.text)
     if self.soma != self.notify and self.soma != 0:
         if self.isHidden() or int(self.windowState()) == 1 or int(self.windowState()) == 3:
