@@ -14,6 +14,7 @@ set -e
 install -Dm 0644 appdata/"$PRGNAM".png "$install_root"/usr/share/pixmaps
 install -Dm 0644 appdata/"$PRGNAM".desktop "$install_root"/usr/share/applications
 install -Dm 0644 appdata/"$PRGNAM"-autostart.desktop "$install_root"/usr/share/"$PRGNAM"/autostart
+install -Dm 0644 icon_status/* "$install_root"/usr/share/"$PRGNAM"/icon_status
 install -Dm 0644 translate/*.qm "$install_root"/usr/share/"$PRGNAM"/translate
 install -Dm 0644 sound/* "$install_root"/usr/share/"$PRGNAM"/sound
 
