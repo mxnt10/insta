@@ -3,7 +3,7 @@ __appname__ = 'Insta'
 
 __pagename__ = __appname__ + ' - Instagram Desktop'
 
-__version__ = '3.0.1'
+__version__ = '3.0.2'
 
 __url__ = 'https://www.instagram.com/'
 
