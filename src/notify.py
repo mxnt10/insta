@@ -31,10 +31,9 @@ def notifyMessage(self):
 # Essa função pode variar conforme o webapp.
 def verifyNotify(self, res):
     self.soma = 0
-    for tag in res.xpath('//div[@class="bqXJH"]'):
+    for tag in res.xpath('//div[@class="_aadh"]'):
         self.soma += int(tag.text)
-    for tag in res.xpath(
-            '//*[@id="react-root"]/section/nav/div[2]/div/div/div[3]/div/div[5]/a/div/div/div/div[2]/div/div/div/div'):
+    for tag in res.xpath('//div[@class="_aacl _aacp _aacu _aad3 _aad6 _aade"]'):
         self.soma += int(tag.text)
     if self.soma != self.notify and self.soma != 0:
         self.notify = self.soma  # Necessário para mapear alterações no número de notificações

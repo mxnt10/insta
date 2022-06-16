@@ -3,10 +3,11 @@ All notable changes to this project will be documented in this file.
 Todas as mudanças notáveis neste projeto serão documentadas neste arquivo.
 
 
-## [ 3.0.2 ] - 2022-05-29 ###########################################
+## [ 3.0.2 ] - 2022-06-16 ###########################################
 
 ### Changed / Modificado
  - Restart Back Forward at reload page.
+ - Fixed notificaton detection.
 ###
 
 #####################################################################
