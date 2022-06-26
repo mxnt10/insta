@@ -185,7 +185,7 @@ class MainWindow(QMainWindow):
         try:
             res = html.fromstring(htm)
             title = res.xpath('//title')
-            if not __err__ in title[0].text and res.xpath('//i[@class="sp_jY02qVAhKr8 sx_98e64d"]'):
+            if not __err__ in title[0].text and res.xpath('//i[@class="sp_j88osDFh7lo sx_385bf7"]'):
                 verifyNotify(self, res)
             else:
                 self.soma = 0
